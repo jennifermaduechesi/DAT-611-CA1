@@ -1,0 +1,22 @@
+{
+  "name": "chidi-token-contract",
+  "version": "1.0.0",
+  "description": "Chidi (CHI) ERC20 token - fixed supply",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "deploy:base": "hardhat run scripts/deploy.js --network base",
+    "verify:sepolia": "hardhat verify --network sepolia",
+    "verify:base": "hardhat verify --network base"
+  },
+  "devDependencies": {
+    "hardhat": "2.28.6",
+    "@nomicfoundation/hardhat-toolbox": "5.0.0",
+    "dotenv": "16.4.5",
+    "solc": "0.8.24"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.6.1"
+  }
+}
