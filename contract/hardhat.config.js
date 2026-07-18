@@ -30,9 +30,9 @@ module.exports = {
   },
   etherscan: {
     // A single Etherscan v2 API key works for both Ethereum (Sepolia) and Base (Basescan).
-    apiKey: {
-      sepolia: ETHERSCAN_API_KEY,
-      base: ETHERSCAN_API_KEY,
-    },
+    apiKey: ETHERSCAN_API_KEY,
+  },
+  sourcify: {
+    enabled: false,
   },
 };
