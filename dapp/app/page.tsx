@@ -8,6 +8,7 @@ import { JoinCard } from "@/components/JoinCard";
 import { StudentPanel } from "@/components/StudentPanel";
 import { TeacherPanel } from "@/components/TeacherPanel";
 import { SpinnerWheel } from "@/components/SpinnerWheel";
+import { PassCard } from "@/components/PassCard";
 import { Leaderboard } from "@/components/Leaderboard";
 import { useSession, isTeacher } from "@/lib/session";
 
@@ -84,6 +85,8 @@ export default function Home() {
                   : `${handRaisers.length} on the wheel`}
               </p>
             </div>
+
+            <PassCard />
 
             {!me ? (
               <JoinCard
