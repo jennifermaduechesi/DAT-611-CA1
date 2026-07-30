@@ -2,6 +2,8 @@
 
 A DAT620 (Blockchain & Mobile Technology) class project by Jennifer.
 
+**Live app:** https://spinner-class-dapp.vercel.app
+
 It has two parts:
 
 1. **Project 1 — the token:** an ERC20 called **Chidi (CHI)**, fixed supply of
