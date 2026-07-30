@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4338ca"/>
+      <stop offset="0.55" stop-color="#6d28d9"/>
+      <stop offset="1" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="48" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="48" fill="url(#glow)"/>
+  <rect x="16" y="16" width="480" height="480" rx="36" fill="none" stroke="url(#gold)" stroke-width="3" stroke-opacity="0.85"/>
+
+  <!-- spinner wheel -->
+  <g transform="translate(256 214)">
+    <circle r="108" fill="#0f172a" stroke="url(#gold)" stroke-width="6"/>
+    <g>
+      <path d="M0 0 L0 -104 A104 104 0 0 1 90.1 -52 Z" fill="#6366f1"/>
+      <path d="M0 0 L90.1 -52 A104 104 0 0 1 90.1 52 Z" fill="#ec4899"/>
+      <path d="M0 0 L90.1 52 A104 104 0 0 1 0 104 Z" fill="#14b8a6"/>
+      <path d="M0 0 L0 104 A104 104 0 0 1 -90.1 52 Z" fill="#f59e0b"/>
+      <path d="M0 0 L-90.1 52 A104 104 0 0 1 -90.1 -52 Z" fill="#8b5cf6"/>
+      <path d="M0 0 L-90.1 -52 A104 104 0 0 1 0 -104 Z" fill="#3b82f6"/>
+    </g>
+    <circle r="20" fill="url(#gold)" stroke="#0f172a" stroke-width="3"/>
+    <!-- pointer -->
+    <path d="M0 -120 l -14 -22 l 28 0 Z" fill="url(#gold)" stroke="#0f172a" stroke-width="2"/>
+  </g>
+
+  <text x="256" y="372" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700" letter-spacing="3" fill="url(#gold)">CLASS PASS</text>
+  <text x="256" y="410" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21" letter-spacing="6" fill="#e9d5ff">SPINNER CLASS</text>
+
+  <line x1="72" y1="440" x2="440" y2="440" stroke="#c4b5fd" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="4 6"/>
+  <text x="256" y="466" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="2" fill="#ddd6fe">DAT620 · BLOCKCHAIN · ADMIT ONE</text>
+</svg>
