@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
-  title: "Chidi (CHI) Token",
-  description: "Chidi token dapp - balance and transfers",
+  title: "Spinner Class dApp",
+  description: "Classroom quiz game — stake CHI, raise your hand, spin to answer.",
 };
 
 export default function RootLayout({
