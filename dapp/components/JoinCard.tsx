@@ -8,12 +8,14 @@ import { joinSession, isTeacher } from "@/lib/session";
 export function JoinCard({
   sessionId,
   onJoined,
+  initialName = "",
 }: {
   sessionId: string;
   onJoined: () => void;
+  initialName?: string;
 }) {
   const { address } = useAccount();
-  const [name, setName] = useState("");
+  const [name, setName] = useState(initialName);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,8 +30,11 @@ export function JoinCard({
   const { writeContractAsync } = useWriteContract();
 
   useEffect(() => {
-    if (address && !name) setName(isTeacher(address) ? "Teacher" : "");
-  }, [address, name]);
+    if (!name) {
+      if (initialName) setName(initialName);
+      else if (address && isTeacher(address)) setName("Teacher");
+    }
+  }, [address, name, initialName]);
 
   async function handleJoin() {
     if (!address) return;

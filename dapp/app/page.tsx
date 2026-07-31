@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
+import { useAccount, useReadContract } from "wagmi";
 import { NetworkGuard } from "@/components/NetworkGuard";
+import { RegisterCard } from "@/components/RegisterCard";
 import { JoinCard } from "@/components/JoinCard";
 import { StudentPanel } from "@/components/StudentPanel";
 import { TeacherPanel } from "@/components/TeacherPanel";
@@ -11,11 +12,28 @@ import { SpinnerWheel } from "@/components/SpinnerWheel";
 import { PassCard } from "@/components/PassCard";
 import { Leaderboard } from "@/components/Leaderboard";
 import { useSession, isTeacher } from "@/lib/session";
+import { CLASS_PASS_ADDRESS, classPassAbi } from "@/lib/contracts";
+import { getRegistration } from "@/lib/registration";
 
 export default function Home() {
   const { address, isConnected } = useAccount();
   const { session, participants, loading } = useSession();
   const [joinedTick, setJoinedTick] = useState(0);
+
+  // Registration (simulated 18+ verification) gates the mint.
+  const [regName, setRegName] = useState<string | null>(null);
+  useEffect(() => {
+    setRegName(getRegistration(address)?.name ?? null);
+  }, [address]);
+  const registered = regName !== null;
+
+  const { data: holdsPass } = useReadContract({
+    address: CLASS_PASS_ADDRESS,
+    abi: classPassAbi,
+    functionName: "hasPass",
+    args: address ? [address] : undefined,
+    query: { enabled: !!address },
+  });
 
   const me = useMemo(
     () =>
@@ -89,10 +107,15 @@ export default function Home() {
             <PassCard />
 
             {!me ? (
-              <JoinCard
-                sessionId={session.id}
-                onJoined={() => setJoinedTick((t) => t + 1)}
-              />
+              holdsPass || registered ? (
+                <JoinCard
+                  sessionId={session.id}
+                  onJoined={() => setJoinedTick((t) => t + 1)}
+                  initialName={regName ?? ""}
+                />
+              ) : (
+                <RegisterCard onRegistered={(name) => setRegName(name)} />
+              )
             ) : teacher ? (
               <TeacherPanel
                 session={session}
